@@ -1,0 +1,1 @@
+curl --verbose localhost:3000/        
