@@ -1,4 +1,4 @@
-const fs = require("node:fs");
+const fs = require("fs");
 
 fs.writeFile("textFile.txt", "Hello you! :-)", {encoding: "utf-8"}, (error) => {
     if(error){
