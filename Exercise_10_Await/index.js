@@ -1,8 +1,4 @@
-# Exercise_10
-
-Create a getResults function that uses async and await. Inside of the function, call the luckyDraw function for each of the players: Tina, Jorge, Julien
-
-Log out the resolved value for each promise and handle any promise rejections.
+const playersArray = ["Tina", "Jorge", "Julien"];
 
 function luckyDraw(player) {
   return new Promise((resolve, reject) => {
@@ -17,3 +13,15 @@ function luckyDraw(player) {
     });
   });
 }
+
+const getResults = async (newPlayer) => {
+  try {
+    const result = await luckyDraw(newPlayer);
+    console.log(result);
+
+  } catch (err) {
+    console.error(err);
+  }
+};
+
+playersArray.forEach((person) => getResults(person));
