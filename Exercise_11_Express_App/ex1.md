@@ -5,7 +5,7 @@
 - Write simple Express server that listens on port `3000` (use dotenv to specify the port)
 - Create a dummy "database" of `planets` using a `let` variable. (You will use this data in further exercises.)
 - Configure your app (`app.use()`) to:
-  - accept JSON from the Client
+  - accept JSON from the Client 
   - log the Client's requests
 
 ## Use
