@@ -17,5 +17,5 @@ function luckyDraw(player) {
 players.forEach((person) =>
   luckyDraw(person)
     .then((value) => console.log(value))
-    .catch((error) => console.error(error))
+    .catch((err) => console.error(err))
 );
