@@ -1,10 +1,23 @@
 require("dotenv").config();
 const express = require("express");
 const morgan = require("morgan");
-const planets = require("./api/planets");
 const app = express();
 
 const { SERVER_PORT } = process.env;
+
+app.use(express.json());
+
+
+let planets = [
+  {
+    id: 1,
+    name: "Earth",
+  },
+  {
+    id: 2,
+    name: "Mars",
+  },
+];
 
 app.use(morgan("dev"));
 
@@ -12,7 +25,6 @@ app.use(morgan("dev"));
  * @path api/planets
  */
 app.get("/api/planets", (req, res) => {
-  //console.log(JSON.stringify(planets));
   return res.status(200).json(planets);
 });
 
@@ -27,6 +39,13 @@ app.get("/api/planets/:id", (req, res) => {
 });
 
 
+app.post("/api/planets", (req, res) => {
+  const { id, name } = req.body;
+  const newPlanet = {id, name};
+  planets = [...planets, newPlanet];
+  console.log(req.body);
+  res.status(201).json({msg: "The new planet has been successfully created"});
+});
 
 
 
