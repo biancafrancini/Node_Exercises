@@ -1,4 +1,4 @@
-  let planets = [
+  const planets = [
     {
       id: 1,
       name: "Earth",
@@ -8,3 +8,5 @@
       name: "Mars",
     },
   ];
+
+  module.exports = planets;
