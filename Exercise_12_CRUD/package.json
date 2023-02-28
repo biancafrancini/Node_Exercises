@@ -1,0 +1,19 @@
+{
+  "name": "exercise_12_crud",
+  "version": "1.0.0",
+  "description": "exercise-12",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon index"
+  },
+  "author": "B_",
+  "license": "ISC",
+  "devDependencies": {
+    "nodemon": "^2.0.20"
+  },
+  "dependencies": {
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "joi": "^17.8.3"
+  }
+}
