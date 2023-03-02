@@ -25,7 +25,8 @@ app.use(morgan("dev"));
  * @path api/planets
  */
 app.get("/api/planets", (req, res) => {
-  return res.status(200).json(planets);
+  console.log(planets);
+  res.status(200).json(planets);
 });
 
 /**
@@ -33,8 +34,11 @@ app.get("/api/planets", (req, res) => {
  */
 app.get("/api/planets/:id", (req, res) => {
   const { id } = req.params;
+
   const planet_by_id = planets.find((planet) => planet.id === Number(id));
-  return res.status(200).json(planet_by_id);
+  //console.log(planet_by_id);
+
+  res.status(200).json(planet_by_id);
 });
 
 app.post("/api/planets", (req, res) => {
@@ -44,19 +48,36 @@ app.post("/api/planets", (req, res) => {
     name: Joi.string().required(),
   });
 
-  try {
-    const newPlanet = schema.validateAsync(req.body)
+  const newPlanet = schema.validate(req.body);
 
-    planets = [...planets, newPlanet];
+  planets = [...planets, newPlanet.value];
+  //console.log(planets);
 
-    console.log(req.body);
-
-    return res.status(201).json({ msg: "The new planet has been successfully created" });
-
-  } catch (error) {
-    console.log(error);
-  }
+  res.status(201).json({ msg: "The new planet has been successfully created" });
 });
+
+app.put("/api/planets/:id", (req, res) => {
+  const { id } = req.params;
+  const {name} = req.body;
+
+  planets = planets.map((planet) =>
+    planet.id === Number(id) ? { ...planet, name} : planet);
+    console.log(planets)
+
+  res.status(200).json({ msg: "Planet has been successfully updated by ID", planets});
+});
+
+
+app.delete("/api/planets/:id", (req, res) => {
+  const { id } = req.params;
+  planets = planets.filter((planet) => planet.id !== Number(id));
+    
+    console.log(planets)
+
+  res.status(200).json({ msg: `Planet with id:${id} was deleted`, planets});
+});
+
+
 
 app.listen(SERVER_PORT, () => {
   console.log(`The server listen at port ${SERVER_PORT}`);
