@@ -3,11 +3,11 @@
 ## Do
 
 - Add planets Controller (`controllers/planets.ts`) consisting of the following functions:
-  - `getAll`
-  - `getOneById`
-  - `create`
-  - `updateById`
-  - `deleteById`.
+  - `getAll` ✅
+  - `getOneById`✅
+  - `create`✅
+  - `updateById`✅
+  - `deleteById`.✅
 - Then, replace callback functions in routes `(req: Request, res: Response) =>` with the functions above. (For example: the route `/api/planets` should use `getAll` function.)
 
 ## Use
