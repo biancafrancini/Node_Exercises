@@ -2,12 +2,6 @@ const Joi = require("joi");
 
 const db = require("../db");
 
-const setUpDatabase = async () => {
-  await db.query(`CREATE DATABASE planets;`);
-}
-
-setUpDatabase();
-
 
 const getAll = async (req, res) => {
   const planets = await db.query("SELECT * FROM planets;");
