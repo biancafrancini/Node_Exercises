@@ -27,8 +27,6 @@ const pool = new Pool({
         await client.query(
         `INSERT INTO planetstable (name) VALUES ('Earth');
         INSERT INTO planetstable (name) VALUES ('Mars');`);
-        await client.query(
-        `INSERT INTO planetstable (name) VALUES ('Venus');`);
 
     } catch (err) {
       throw err; 
