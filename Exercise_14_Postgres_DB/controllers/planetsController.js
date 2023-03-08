@@ -1,17 +1,27 @@
+const { query } = require("express");
 const Joi = require("joi");
 
 const db = require("../db");
 
+/*const setupDb = async () => {
+  try{
+      const result = await db.query("SELECT * FROM planetsTable");
+      console.log(result);
+  }catch(err){
+      console.log(err);
+  }
+}
+setupDb();*/
 
 const getAll = async (req, res) => {
-  const planets = await db.query("SELECT * FROM planets;");
+  const planets = await db.query('SELECT id FROM planetstable');
   console.log(planets);
   return res.status(200).json(planets);
 };
 
 const getOneById = async (req, res) => {
   const { id } = req.params;
-  const planet_by_id = await db.query("SELECT * FROM planets WHERE id=$1;", Number(id));
+  const planet_by_id = await db.one('SELECT * FROM planetstable WHERE id=$1;', Number(id));
   console.log(planets);
 
   return res.status(200).json(planet_by_id);

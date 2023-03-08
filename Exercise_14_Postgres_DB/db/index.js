@@ -13,12 +13,23 @@ const pool = new Pool({
 // it contains if a backend error or network partition happens
    
   // async/await - check out a client
-  const setupDb = async() =>{
+  const query = async() =>{
     const client = await pool.connect();
     try {
-      await client.query(`CREATE DATABASE planets;`);
-      await client.query(`CREATE TABLE planets;`);
-      await client.end()
+      //await client.query(`CREATE DATABASE planets`);
+      await client.query(
+      `DROP TABLE IF EXISTS planetstable;
+
+        CREATE TABLE planetstable (
+        id SERIAL NOT NULL PRIMARY KEY,
+        name TEXT NOT NULL
+       );`);
+        await client.query(
+        `INSERT INTO planetstable (name) VALUES ('Earth');
+        INSERT INTO planetstable (name) VALUES ('Mars');`);
+        await client.query(
+        `INSERT INTO planetstable (name) VALUES ('Venus');`);
+
     } catch (err) {
       throw err; 
     } finally {
@@ -26,4 +37,4 @@ const pool = new Pool({
     }
   }
 
-  module.exports= {setupDb};
+  module.exports= {query};
