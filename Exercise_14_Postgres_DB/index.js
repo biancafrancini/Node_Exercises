@@ -4,15 +4,6 @@ const morgan = require("morgan");
 
 const app = express();
 
-/*(async () => {
-    try{
-        const result = await db.query("SELECT * FROM planets");
-        console.log(result);
-    }catch(err){
-        console.log(err);
-    }
-})()*/
-
 const {
     getAll,
     getOneById,
