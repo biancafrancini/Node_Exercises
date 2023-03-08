@@ -3,12 +3,12 @@
 ## Do
 
 - Using PgAdmin:
-  - Create a Postgres DB.
+  - Create a Postgres DB. ✅
 - Using a `setupDb` function:
-  - Create `planets` table.
-  - Populate the table with two planets (e.g. `'Earth'` and `'Mars'`).
+  - Create `planets` table.✅
+  - Populate the table with two planets (e.g. `'Earth'` and `'Mars'`).✅
 - Connect your app to Postgres using Express (`pg-promise`). [https://github.com/vitaly-t/pg-promise]
-- Replace the dummy DB with the Postgres DB.
+- Replace the dummy DB with the Postgres DB. ✅
 - Rewrite all planets controller functions. They should now work with the DB. (Use the SQL queries below.)
 
 ## Use
@@ -16,13 +16,13 @@
 - SQL query to create the table:
 
   ```sql
-  DROP TABLE IF EXISTS planets;
+  DROP TABLE IF EXISTS planets; ✅
 
   CREATE TABLE planets(
     id SERIAL NOT NULL PRIMARY KEY,
     name TEXT NOT NULL,
   );
-  ```
+  ``` ✅
 
 - Make sure that all CRUD operations read from and write to Postgres (instead of the dummy db you've been using in previous exercises).
   - `GET /planets`
