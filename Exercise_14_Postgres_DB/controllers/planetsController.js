@@ -4,7 +4,7 @@ const Joi = require("joi");
 const db = require("../db");
 
 const getAll = async (req, res) => {
-  const planets = await db.query('SELECT id FROM planetstable');
+  const planets = await db.query('SELECT * FROM planetstable');
   console.log(planets);
   return res.status(200).json(planets);
 };
