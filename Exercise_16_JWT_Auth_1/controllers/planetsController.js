@@ -1,5 +1,5 @@
 const Joi = require("joi");
-const db = require("../db");
+const {db} = require("../db");
 
 const getAll = async (req, res) => {
   const planets = await db.many('SELECT * FROM planets;');
