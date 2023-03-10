@@ -2,10 +2,10 @@
 
 ## Do
 
-- Add `image` field to `planets` table in the DB.
-- Set `POST /planets/:id/image` route for file upload (planet's image).
-- Store the image file locally (on disk).
-- Save file path to DB (update the correct planet).
+- Add `image` field to `planets` table in the DB. ✅
+- Set `POST /planets/:id/image` route for file upload (planet's image). ✅
+- Store the image file locally (on disk). ✅
+- Save file path to DB (update the correct planet). ✅
 
 ## Use
 
