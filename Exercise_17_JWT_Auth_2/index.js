@@ -11,7 +11,9 @@ const {
   updateById,
   deleteById,
   uploadImage,
-} = require("../Exercise_16_JWT_Auth_1/controllers/planetsController");
+} = require("./controllers/planetsController");
+
+const { logIn } = require("./controllers/users");
 
 
 const storage = multer.diskStorage({
@@ -65,6 +67,12 @@ app.delete("/api/planets/:id", deleteById);
  * @request post
  */
 app.post("/api/planets/:id/image", upload.single("image"), uploadImage);
+
+/**
+ * @path api/users/login
+ * @request post
+ */
+app.post("/api/users/login", logIn);
 
 
 app.listen(SERVER_PORT, () => {
