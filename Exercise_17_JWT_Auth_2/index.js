@@ -13,7 +13,10 @@ const {
   uploadImage,
 } = require("./controllers/planetsController");
 
-const { logIn } = require("./controllers/users");
+const { 
+  logIn,
+  signUp,
+ } = require("./controllers/users");
 
 
 const storage = multer.diskStorage({
@@ -73,6 +76,12 @@ app.post("/api/planets/:id/image", upload.single("image"), uploadImage);
  * @request post
  */
 app.post("/api/users/login", logIn);
+
+/**
+ * @path api/users/signup
+ * @request post
+ */
+app.post("/api/users/signup", signUp);
 
 
 app.listen(SERVER_PORT, () => {
