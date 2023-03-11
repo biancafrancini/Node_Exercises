@@ -11,7 +11,7 @@ const {
   updateById,
   deleteById,
   uploadImage,
-} = require("./controllers/planetsController");
+} = require("../Exercise_16_JWT_Auth_1/controllers/planetsController");
 
 
 const storage = multer.diskStorage({
