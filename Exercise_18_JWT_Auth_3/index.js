@@ -2,7 +2,7 @@ require("dotenv").config();
 const express = require("express");
 const morgan = require("morgan");
 const multer = require("multer");
-const { authorize } = require("./middleware/authorize");
+const { authorize } = require("./middleware/authorize.js");
 const passport = require("./passport.js");
 const app = express();
 
@@ -87,7 +87,7 @@ app.post("/api/users/login", logIn);
 app.post("/api/users/signup", signUp);
 
 /**
- * @path api/users/signup
+ * @path api/users/logout
  * @request get
  */
 app.get("/api/users/logout", authorize, logOut);

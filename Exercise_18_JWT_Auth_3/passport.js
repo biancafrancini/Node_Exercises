@@ -1,9 +1,9 @@
 require("dotenv").config();
 const passport = require("passport");
 const passportJWT = require("passport-jwt");
-const { db } = require("./db");
+const { db } = require("./db.js");
 
-const { SECRET } = process.env.SECRET;
+const { SECRET } = process.env;
 
 passport.use(
     new passportJWT.Strategy({

@@ -13,7 +13,7 @@ const logIn = async (req, res) => {
       username,
     };
 
-    const { SECRET = "" } = process.env;
+    const { SECRET= "" } = process.env;
 
     const token = jwt.sign(payload, SECRET);
 
@@ -44,8 +44,8 @@ const signUp = async (req, res) => {
 
 const logOut = async (req, res) => {
   const user = req.user;
-  await db.none(`UPDATE users SET token=NULL WHERE id=$1 RETURNING id;`, [user, id, null]);
-  res.status(200).json({ msg: "Logout has been successfully processed"})
+  await db.none(`UPDATE users SET token=NULL WHERE id=$1;`, [user?.id, null]);
+  return res.status(200).json({ msg: "Logout has been successfully processed"})
 }
 
 
