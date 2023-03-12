@@ -42,4 +42,12 @@ const signUp = async (req, res) => {
   }
 };
 
-module.exports = { logIn, signUp };
+const logOut = async (req, res) => {
+  const user = req.user;
+  await db.none(`UPDATE users SET token=NULL WHERE id=$1 RETURNING id;`, [user, id, null]);
+  res.status(200).json({ msg: "Logout has been successfully processed"})
+}
+
+
+
+module.exports = { logIn, signUp, logOut };

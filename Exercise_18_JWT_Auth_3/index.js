@@ -2,6 +2,8 @@ require("dotenv").config();
 const express = require("express");
 const morgan = require("morgan");
 const multer = require("multer");
+const { authorize } = require("./middleware/authorize");
+const passport = require("./passport.js");
 const app = express();
 
 const {
@@ -16,6 +18,7 @@ const {
 const { 
   logIn,
   signUp,
+  logOut,
  } = require("./controllers/users");
 
 
@@ -83,6 +86,11 @@ app.post("/api/users/login", logIn);
  */
 app.post("/api/users/signup", signUp);
 
+/**
+ * @path api/users/signup
+ * @request get
+ */
+app.get("/api/users/logout", authorize, logOut);
 
 app.listen(SERVER_PORT, () => {
   console.log(`The server listen at port ${SERVER_PORT}`);
