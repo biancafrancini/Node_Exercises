@@ -13,15 +13,14 @@ const {
   uploadImage,
 } = require("./controllers/planetsController");
 
-
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
-    cb(null, './uploads');
+    cb(null, "./uploads");
   },
   filename: (req, file, cb) => {
     cb(null, file.originalname);
-  }
-})
+  },
+});
 
 const upload = multer({ storage });
 
@@ -30,8 +29,6 @@ const { SERVER_PORT } = process.env;
 app.use(express.json());
 
 app.use(morgan("dev"));
-
-
 
 /**
  * @path api/planets

@@ -56,9 +56,7 @@ const updateById = async (req, res) => {
 
   await db.none(`UPDATE planets SET name=$2 WHERE id=$1`, [id, name]);
 
-  return res
-    .status(200)
-    .json({ msg: "Planet has been successfully updated by ID" });
+  return res.status(200).json({ msg: "Planet has been successfully updated by ID" });
 };
 
 const deleteById = async (req, res) => {
@@ -70,7 +68,7 @@ const deleteById = async (req, res) => {
 };
 
 const uploadImage = async (req, res) => {
-  console.log(req.file);
+  //console.log(req.file);
   const { id } = req.params;
   const fileName = req.file?.path;
 
