@@ -45,8 +45,6 @@ app.put("/api/planets/:id", updateById);
  */
 app.delete("/api/planets/:id", deleteById);
 
-
-
 app.listen(SERVER_PORT, () => {
   console.log(`The server listen at port ${SERVER_PORT}`);
 });

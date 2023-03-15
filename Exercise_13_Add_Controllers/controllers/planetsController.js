@@ -39,7 +39,6 @@ const create = (req, res) => {
   }
 
   planets = [...planets, newPlanet];
-  //console.log(planets);
 
   return res.status(201).json({ msg: "The new planet has been successfully created" });
 };
@@ -49,7 +48,6 @@ const updateById = (req, res) => {
   const { name } = req.body;
 
   planets = planets.map((planet) => planet.id === Number(id) ? { ...planet, name } : planet);
-  //console.log(planets);
 
   return res.status(200).json({ msg: "Planet has been successfully updated by ID", planets });
 };
@@ -58,11 +56,8 @@ const deleteById = (req, res) => {
   const { id } = req.params;
   planets = planets.filter((planet) => planet.id !== Number(id));
 
-  //console.log(planets);
-
   return res.status(200).json({ msg: `Planet with id:${id} was deleted`, planets });
 };
-
 
 
 module.exports = {
