@@ -34,7 +34,7 @@ const signUp = async (req, res) => {
     
     return res.status(409).json({msg: "Signup successful. Now you can log in"});
   
-} else {
+  } else {
     
     const { id } = await db.one(`INSERT INTO users (username, password) VALUES ($1, $2) RETURNING id;`, [username, password]);
 
