@@ -36,7 +36,6 @@ app.get("/api/planets/:id", (req, res) => {
   const { id } = req.params;
 
   const planet_by_id = planets.find((planet) => planet.id === Number(id));
-  //console.log(planet_by_id);
 
   return res.status(200).json(planet_by_id);
 });
@@ -50,38 +49,36 @@ app.post("/api/planets", (req, res) => {
 
   const validatedNewPlanet = schema.validate(newPlanet);
 
-  if(validatedNewPlanet.error){
-    return res.status(400).json({msg: "Some data are not valid"});
+  if (validatedNewPlanet.error) {
+    return res.status(400).json({ msg: "Some data are not valid" });
   }
 
   planets = [...planets, newPlanet];
-  console.log(planets);
+  //console.log(planets);
 
   return res.status(201).json({ msg: "The new planet has been successfully created" });
 });
 
 app.put("/api/planets/:id", (req, res) => {
   const { id } = req.params;
-  const {name} = req.body;
+  const { name } = req.body;
 
   planets = planets.map((planet) =>
-    planet.id === Number(id) ? { ...planet, name} : planet);
-    console.log(planets)
+    planet.id === Number(id) ? { ...planet, name } : planet
+  );
+  //console.log(planets);
 
-  return res.status(200).json({ msg: "Planet has been successfully updated by ID", planets});
+  return res.status(200).json({ msg: "Planet has been successfully updated by ID", planets });
 });
-
 
 app.delete("/api/planets/:id", (req, res) => {
   const { id } = req.params;
   planets = planets.filter((planet) => planet.id !== Number(id));
-    
-    console.log(planets)
 
-  return res.status(200).json({ msg: `Planet with id:${id} was deleted`, planets});
+  //console.log(planets);
+
+  return res.status(200).json({ msg: `Planet with id:${id} was deleted`, planets });
 });
-
-
 
 app.listen(SERVER_PORT, () => {
   console.log(`The server listen at port ${SERVER_PORT}`);
