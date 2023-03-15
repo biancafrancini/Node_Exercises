@@ -61,8 +61,10 @@ const uploadImage = async (req, res) => {
     return res.status(201).json({ msg: "Your file has been uploaded" });
   } else {
     return res.status(400).json({ msg: "Somenthing went wrong during the uploading"});
+  }
 }
-}
+
+
 
 module.exports = {
   getAll,
