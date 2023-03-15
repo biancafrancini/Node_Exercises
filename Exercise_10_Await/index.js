@@ -18,7 +18,6 @@ const getResults = async (newPlayer) => {
   try {
     const result = await luckyDraw(newPlayer);
     console.log(result);
-
   } catch (err) {
     console.error(err);
   }
