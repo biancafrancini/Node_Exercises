@@ -1,13 +1,13 @@
 const passport = require("passport");
 require("dotenv").config();
 
-const authorize = async (req, res, next) => {
-  await passport.authenticate("jwt", { session: false }, (err, user) => {
+const authorize = (req, res, next) => {
+  passport.authenticate("jwt", { session: false }, (err, user) => {
     if (!user || err) {
-     return res.status(401).json({msg: "unathorized user"})
+      res.status(401).json({ msg: "unathorized user", user: user });
     } else {
-        req.user = user;
-        next();
+      req.user = user;
+      next();
     }
   })(req, res, next);
 };

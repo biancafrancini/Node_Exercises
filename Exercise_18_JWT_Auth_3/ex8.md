@@ -17,7 +17,7 @@
   ```
   - Make sure that `$1` is the user's `id`
 - `passport.authenticate()` in `authorize` function
-  - set `session` to `false` in `passport.authetnicate` (2nd param)
+  - set `session` to `false` in `passport.authenticate` (2nd param)
   - when successful, do: `req.user = user` (`user` comes from `(err, user)` cb func that `passport.authenticate` provides (3rd param))
 
 ### Check
